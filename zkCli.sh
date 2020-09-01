@@ -1,0 +1,1 @@
+./apache-zookeeper-3.5.8-bin_1/bin/zkCli.sh -server localhost:2181,localhost:2182,localhost:2183
