@@ -1,0 +1,10 @@
+data
+apache-zookeeper-3.6.1-bin_1/
+!apache-zookeeper-3.6.1-bin_1/conf/zoo.cfg
+
+apache-zookeeper-3.6.1-bin_2
+apache-zookeeper-3.6.1-bin_3
+kafka_2.13-2.6.0_1
+kafka_2.13-2.6.0_2
+kafka_2.13-2.6.0_3
+source tar
