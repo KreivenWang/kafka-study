@@ -38,7 +38,7 @@ class KafkaService {
     this.client = new KafkaClient(opt.client);
     this.client.on('brokersChanged', () => console.log(`kafka client brokersChanged`));
     this.client.on('close', () => console.log(`kafka client closed`));
-    this.client.on('connect', () => console.log(`kafk aclient connect`));
+    this.client.on('connect', () => console.log(`kafka client connect`));
     this.client.on('error', (err) => console.error(`kafka client error`, err));
     this.client.on('socket_error', (err) => console.error(`kafka client socket_error`, err));
     this.client.on('ready', () => console.log(`kafka client ready`));
