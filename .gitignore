@@ -10,3 +10,5 @@ kafka_2.13-2.6.0_2
 kafka_2.13-2.6.0_3
 source tar
 .DS_Store
+package-lock.json
+node_modules
