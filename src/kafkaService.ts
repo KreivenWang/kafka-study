@@ -6,6 +6,7 @@ import {
   KafkaClient,
   KafkaClientOptions,
 } from 'kafka-node';
+import { initKafkaLogger } from './kafkaLogger';
 const brokerList = 'localhost:9091,localhost:9092,localhost:9093';
 const opt = {
   client: {
@@ -70,11 +71,11 @@ class KafkaService {
     });
     this.consumerGroup.on('error', (error) => {
       console.log(`Error while creating consumer for topic ${opt.topic}`, error);
-      console.log('reinitializing kafka client/consumer/producer in 10 sec');
-      setTimeout(() => {
-        console.log('reinitializing kafka client/consumer/producer');
-        this.init();
-      }, 10000);
+      // console.log('reinitializing kafka client/consumer/producer in 10 sec');
+      // setTimeout(() => {
+      //   console.log('reinitializing kafka client/consumer/producer');
+      //   this.init();
+      // }, 10000);
     });
 
     this.consumerGroup.on('message', (message) => {
@@ -89,7 +90,13 @@ class KafkaService {
     this.consumerGroup.on('rebalancing', () => console.log(`consumer group rebalancing`));
   }
 }
+
+process
+  .on('uncaughtException', (err) => console.error('Uncaught Exception thrown: ', err))
+  .on('unhandledRejection', (err) => console.error('Unhandled Rejection at Promise: ', err));
+
 try {
+  initKafkaLogger();
   const kfkSvc = new KafkaService();
   kfkSvc.init();
   kfkSvc.consume();
